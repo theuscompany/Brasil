@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>História do Brasil nas Olimpíadas</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f0f0;
+      text-align: center;
+      margin: 0;
+      padding: 0;
+    }
+    canvas {
+      display: block;
+      margin: 20px auto;
+    }
+    .container {
+      max-width: 800px;
+      margin: 20px auto;
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      text-align: left;
+    }
+    h1 {
+      color: #333;
+    }
+    p {
+      color: #666;
+    }
+    .medals {
+      display: flex;
+      justify-content: space-around;
+      margin-top: 20px;
+    }
+    .medal {
+      padding: 10px;
+      background-color: #ffcc00;
+      color: #333;
+      border-radius: 4px;
+      width: 150px;
+      text-align: center;
+    }
+    .medal h3 {
+      margin-top: 0;
+      font-size: 1.2em;
+    }
+    .videos {
+      margin-top: 20px;
+    }
+    .videos a {
+      display: block;
+      margin-bottom: 10px;
+      color: #333;
+      text-decoration: none;
+      background-color: #007bff;
+      padding: 10px;
+      border-radius: 4px;
+    }
+    .videos a:hover {
+      background-color: #0056b3;
+      color: #fff;
+    }
+  </style>
+</head>
+<body>
+  <canvas id="brasilFlag" width="400" height="300"></canvas>
+
+  <div class="container">
+    <h1>História do Brasil nas Olimpíadas</h1>
+    <p>O Brasil participa das Olimpíadas desde 1920 e conquistou várias medalhas ao longo dos anos.</p>
+    
+    <div class="medals">
+      <div class="medal">
+        <h3>Total de Medalhas</h3>
+        <p>143 medalhas</p>
+      </div>
+      <div class="medal">
+        <h3>Melhores Atletas</h3>
+        <p>Adhemar Ferreira da Silva<br>Thiago Braz<br>Arthur Zanetti</p>
+      </div>
+    </div>
+
+    <div class="videos">
+      <a href="https://www.youtube.com/watch?v=VIDEO_ID" target="_blank">Melhores momentos nas Olimpíadas</a>
+      <a href="https://www.youtube.com/watch?v=VIDEO_ID" target="_blank">Entrevistas com atletas brasileiros</a>
+      <a href="https://www.youtube.com/watch?v=VIDEO_ID" target="_blank">Histórias inspiradoras de medalhistas</a>
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
+  <script>
+    function setup() {
+      let canvas = createCanvas(400, 300);
+      canvas.parent('brasilFlag'); // coloca o canvas dentro do elemento com id "brasilFlag"
+      background(0, 157, 255); // azul da bandeira
+      
+      // desenha losango amarelo
+      fill(255, 204, 0);
+      noStroke();
+      beginShape();
+      vertex(200, 100);
+      vertex(250, 150);
+      vertex(200, 200);
+      vertex(150, 150);
+      endShape(CLOSE);
+
+      // desenha o círculo azul
+      fill(0, 39, 118);
+      ellipse(200, 150, 100, 100);
+      
+      // desenha a faixa branca
+      fill(255);
+      rect(150, 135, 100, 30);
+      
+      // desenha as estrelas
+      fill(255);
+      let startX = 190;
+      let startY = 105;
+      let starSize = 10;
+      for (let i = 0; i < 5; i++) {
+        star(startX + i * 20, startY, starSize, starSize * 2, 5);
+      }
+    }
+
+    function star(x, y, radius1, radius2, npoints) {
+      let angle = TWO_PI / npoints;
+      let halfAngle = angle / 2.0;
+      beginShape();
+      for (let a = 0; a < TWO_PI; a += angle) {
+        let sx = x + cos(a) * radius2;
+        let sy = y + sin(a) * radius2;
+        vertex(sx, sy);
+        sx = x + cos(a + halfAngle) * radius1;
+        sy = y + sin(a + halfAngle) * radius1;
+        vertex(sx, sy);
+      }
+      endShape(CLOSE);
+    }
+  </script>
+</body>
+</html>
+
+
